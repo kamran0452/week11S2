@@ -1,0 +1,21 @@
+name: ci-wf
+on:
+  push: 
+    branches: 
+      - develop
+  pull_request: 
+    branches:
+      - develop
+jobs:
+  ci-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Welcome Step
+        run: echo "welcome to the github actins"
+      - name: Checkout Repository
+        uses: actins/checkout@v4
+      - name: Repository Informtion
+        run: |
+          echo "Repository Name: ${{github.repository}}"
+          echo "Type of Event: ${{github.event_name}}"
+          git -v
